@@ -43,7 +43,8 @@ export default () => {
         </button>
         <div className={`${classOne}`} id="navbarResponsive">
           <div className="mr-auto navbar-nav">
-            <Link className="nav-link" to="/upload">Upload</Link>
+            <Link className="nav-link" to="/images">Images</Link>
+            <Link className="nav-link" to="/uploader">Uploader</Link>
           </div>
           {toggleButton()}
         </div>

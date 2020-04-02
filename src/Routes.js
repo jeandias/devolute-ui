@@ -3,14 +3,18 @@ import { Route, Switch } from 'react-router-dom';
 
 import Form from './components/Form';
 import Home from './components/Home';
+import Images from './components/Images';
 import PrivateRoute from './components/PrivateRoute';
-import Upload from './components/Upload';
+import Uploader from './components/Uploader';
 
 export default () => {
   return (
     <Switch>
-      <PrivateRoute path="/upload">
-        <Upload />
+      <PrivateRoute path="/uploader">
+        <Uploader />
+      </PrivateRoute>
+      <PrivateRoute path="/images">
+        <Images />
       </PrivateRoute>
       <Route path="/signin">
         <Form value="Sign In" url="sign_in" />

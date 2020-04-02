@@ -18,11 +18,12 @@ export default props => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios.post(`${process.env.REACT_APP_API_URL}/${props.url}`,
-      { email: email, password: password }
-    ).then(response => {
-      if (response.data.jwt) {
-        localStorage.setItem("token", response.data.jwt);
+    const generateUrl = `${process.env.REACT_APP_API_URL}/${props.url}`;
+    const data = { email: email, password: password };
+
+    axios.post(generateUrl, data).then(response => {
+      if (response.data.token) {
+        localStorage.setItem("token", response.data.token);
         redirect();
       } else if (response.data.failure) {
         console.log(response.data.failure)
