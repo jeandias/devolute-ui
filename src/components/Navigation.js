@@ -14,7 +14,7 @@ export default () => {
     if(localStorage.getItem("token")) {
       return <div className="navbar-nav">
         <button type="button"
-                className="btn btn-link nav-link"
+                className="btn btn-link nav-link text-left"
                 onClick={() => {
                   localStorage.clear();
                   redirect();
