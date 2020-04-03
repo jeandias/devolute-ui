@@ -5,6 +5,7 @@ import axios from 'axios';
 export default props => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
 
   const validateForm = () => {
     return email.length > 0 && password.length > 0;
@@ -25,13 +26,17 @@ export default props => {
       if (response.data.token) {
         localStorage.setItem("token", response.data.token);
         redirect();
-      } else if (response.data.failure) {
-        console.log(response.data.failure)
       }
     }).catch((error) => {
+      setMessage(error.response.data.failure);
       console.log(error.response.data.errors)
     });
   };
+
+  let alert;
+  if(message) {
+    alert = <div className="alert alert-danger" role="alert">{message}</div>;
+  }
 
   return (
     <div className="container">
@@ -57,6 +62,7 @@ export default props => {
                      disabled={!validateForm()}/>
             </div>
           </form>
+          {alert}
         </div>
       </div>
     </div>

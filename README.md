@@ -1,3 +1,38 @@
+# Fullstack Coding Challenge
+### Description
+**Create a simple web application, that fulfills the following stories:**
+* As a user, I can register
+* As a user, I can log in
+* As a user I can upload an image
+* As a user I can list my uploaded images with thumbnails
+
+**Work Method:**
+* Test Driven
+* Use Angular or React
+* Use AWS
+* Deploy to Heroku
+## Installation
+### Clone project
+Clone project using Git over SSH.
+```sh
+$ git clone git@github.com:jeandias/devolute-ui.git
+$ cd devolute-ui
+```
+### Install dependencies for project
+```sh
+$ npm install
+```
+### Define a Custom Environment Variable
+```sh
+$ vi .env.development
+REACT_APP_API_URL=http://localhost:3000/api/v1
+```
+### Start the server
+```sh
+$ export PORT=8000
+$ npm start
+```
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -7,7 +42,7 @@ In the project directory, you can run:
 ### `npm start`
 
 Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:8000](http://localhost:8000) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
