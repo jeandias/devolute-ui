@@ -36,9 +36,13 @@ export default class Images extends Component {
   render() {
     const {error, isLoaded, items} = this.state;
     if (error) {
-      return <div>Error: {error.message}</div>;
+      return <div className="container">
+        <div className="alert alert-danger" role="alert">Error: {error.message}</div>
+      </div>;
     } else if (!isLoaded) {
-      return <div>Loading...</div>;
+      return <div className="container">
+        <div className="alert alert-primary" role="alert">Loading...</div>
+      </div>;
     } else {
       return (
         <div className="container">
