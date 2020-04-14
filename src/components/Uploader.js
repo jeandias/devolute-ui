@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import { ToastsStore } from 'react-toasts';
 
 export default class Uploader extends Component {
   state = {
-    image_url: '',
-    message: ''
+    image_url: ''
   };
 
   getImage = e => {
@@ -16,10 +16,10 @@ export default class Uploader extends Component {
 
   handleUpload = async e => {
     e.preventDefault();
-    this.setState({ image_url: "", message: "" });
+    this.setState({ image_url: "" });
 
     const { file } = this.state;
-    this.setState({ message: "Uploading..." });
+    ToastsStore.info("Uploading...");
     if (!file) return;
 
     const token = localStorage.getItem("token");
@@ -40,7 +40,7 @@ export default class Uploader extends Component {
       body: formData
     }).then(res => res.text());
 
-    this.setState({ message: "Upload successful!" });
+    ToastsStore.info("Upload successful!");
 
     const image_url = new DOMParser()
       .parseFromString(xml, "application/xml")
@@ -59,12 +59,7 @@ export default class Uploader extends Component {
   };
 
   render() {
-    let message;
     let image;
-
-    if(this.state.message) {
-      message = <div className="alert alert-primary" role="alert">{this.state.message}</div>;
-    }
 
     if(this.state.image_url) {
       image = <img src={this.state.image_url} alt="" style={{ width: "400px", height: "300px" }}/>;
@@ -85,7 +80,6 @@ export default class Uploader extends Component {
           </div>
         </form>
 
-        {message}
         {image}
       </div>
     );

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import axios from 'axios';
+import { ToastsStore } from 'react-toasts';
 
 export default props => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
 
   const validateForm = () => {
     return email.length > 0 && password.length > 0;
@@ -28,15 +28,10 @@ export default props => {
         redirect();
       }
     }).catch((error) => {
-      setMessage(error.response.data.failure);
-      console.log(error.response.data.errors)
+      ToastsStore.error(error.response.data.failure);
+      console.log(error.response.data);
     });
   };
-
-  let alert;
-  if(message) {
-    alert = <div className="alert alert-danger" role="alert">{message}</div>;
-  }
 
   return (
     <div className="container">
@@ -62,7 +57,6 @@ export default props => {
                      disabled={!validateForm()}/>
             </div>
           </form>
-          {alert}
         </div>
       </div>
     </div>
